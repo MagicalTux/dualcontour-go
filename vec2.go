@@ -35,6 +35,20 @@ func (v Vec2u) Normalize() Vec2f {
 	return Vec2f{float32(v[0]), float32(v[1])}.Normalize()
 }
 
+func (min Vec2u) ForeachRange(max Vec2u, cb func(*Vec2u)) {
+	var p Vec2u
+
+	for p[1] = min[1]; p[1] < max[1]; p[1]++ {
+		for p[0] = min[0]; p[0] < max[0]; p[0]++ {
+			cb(&p)
+		}
+	}
+}
+
+func (max Vec2u) Foreach(cb func(*Vec2u)) {
+	Vec2u{0, 0}.ForeachRange(max, cb)
+}
+
 type Vec2f [2]float32
 
 func (v Vec2f) LenSq() float32 {

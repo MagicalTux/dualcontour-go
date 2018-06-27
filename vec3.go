@@ -51,6 +51,14 @@ func (max Vec3u) Foreach(cb func(*Vec3u)) {
 
 type Vec3f [3]float32
 
+var (
+	Vec3fAxes = [3]Vec3f{
+		{1, 0, 0},
+		{0, 1, 0},
+		{0, 0, 1},
+	}
+)
+
 func (v Vec3f) String() string {
 	return fmt.Sprintf("Vec3f[% 0.3f, % 0.3f, % 0.3f]", v[0], v[1], v[2])
 }

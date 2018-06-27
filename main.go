@@ -23,16 +23,21 @@ func testAddCylinder(field *Field) {
 }
 
 func testMakeField() *Field {
+	log.Printf("Generating %d^3 field...", FieldSize)
 	field := NewField(Vec3u{FieldSize, FieldSize, FieldSize})
 
+	log.Printf("Adding cylinder...")
 	testAddCylinder(field)
+
+	// TODO here: removeSphere(), addSphere()
+
+	log.Printf("Closing field...")
+	field.CloseField()
 
 	return field
 }
 
 func main() {
-	log.Printf("Generating %d^3 field...", FieldSize)
-
 	field := testMakeField()
 
 	_ = field
